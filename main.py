@@ -51,7 +51,7 @@ def main():
     generate_content(client, messages, verbose)
 
 
-def generate_content(client, messages, verbose):
+def generate_content(client, messages , verbose):
     response = client.models.generate_content(
         model="gemini-2.0-flash-001",
         contents=messages,
@@ -62,7 +62,7 @@ def generate_content(client, messages, verbose):
     if verbose:
         print("Prompt tokens:", response.usage_metadata.prompt_token_count)
         print("Response tokens:", response.usage_metadata.candidates_token_count)
-        
+
     if response.candidates:
         for candidate in response.candidates:
             function_call_content = candidate.content
